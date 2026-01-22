@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "update-electorates": "curl -sL 'https://raw.githubusercontent.com/pmcau/AustralianElectorates/main/Data/Localities.json' -o /tmp/localities.json && tsx scripts/processElectorateData.ts"
+    "update-electorates": "curl -sL 'https://raw.githubusercontent.com/pmcau/AustralianElectorates/main/Data/Localities.json' -o /tmp/localities.json && tsx scripts/processElectorateData.ts",
+    "generate-debates": "tsx scripts/generateDebates.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.91.0",
@@ -19,6 +20,7 @@
     "zustand": "^5.0.10"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
     "@eslint/js": "^9.39.1",
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^24.10.1",
