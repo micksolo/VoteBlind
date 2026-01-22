@@ -9,11 +9,15 @@ interface DebateViewProps {
 }
 
 export function DebateView({ debate, selectedSide }: DebateViewProps) {
-  const [expanded, setExpanded] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(2);
 
-  // Show first 2 messages initially, all 4 when expanded
-  const visibleMessages = expanded ? debate : debate.slice(0, 2);
-  const hasMore = debate.length > 2;
+  const visibleMessages = debate.slice(0, visibleCount);
+  const hasMore = visibleCount < debate.length;
+  const isComplete = visibleCount >= debate.length;
+
+  const handleShowMore = () => {
+    setVisibleCount((prev) => Math.min(prev + 2, debate.length));
+  };
 
   // Determine which side is selected for highlighting
   const getIsSelected = (side: 'left' | 'right'): boolean | undefined => {
@@ -31,38 +35,35 @@ export function DebateView({ debate, selectedSide }: DebateViewProps) {
             key={`${message.side}-${index}`}
             side={message.side}
             text={message.text}
-            index={expanded ? index : index} // Reset animation index when expanding
+            index={index}
             isSelected={getIsSelected(message.side)}
           />
         ))}
       </AnimatePresence>
 
-      {/* Expand/collapse button */}
-      {hasMore && (
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          onClick={() => setExpanded(!expanded)}
-          className="w-full py-2 text-xs text-gray-500 hover:text-gray-700 transition-colors flex items-center justify-center gap-1"
-        >
-          {expanded ? (
-            <>
-              <span>Show less</span>
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-              </svg>
-            </>
-          ) : (
-            <>
-              <span>Tap for more debate</span>
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </>
-          )}
-        </motion.button>
-      )}
+      {/* Show more / End of debate */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="pt-1"
+      >
+        {hasMore ? (
+          <button
+            onClick={handleShowMore}
+            className="w-full py-2 text-xs text-gray-500 hover:text-gray-700 transition-colors flex items-center justify-center gap-1 hover:bg-gray-50 rounded-lg"
+          >
+            <span>Keep going ({debate.length - visibleCount} more)</span>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        ) : isComplete && debate.length > 2 ? (
+          <p className="text-center text-xs text-gray-400 py-2">
+            End of debate
+          </p>
+        ) : null}
+      </motion.div>
     </div>
   );
 }

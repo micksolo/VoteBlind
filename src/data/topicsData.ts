@@ -1,8 +1,11 @@
 import type { PolicyTopic, Party, PartyPosition, SliderPosition } from '../types';
 
 // Policy topics with balanced left (progressive) and right (libertarian) positions
-// Each side shows what you gain AND what you trade off
-// Debates include economic trade-offs: cost, inflation, debt, taxes
+// Each debate has 8 messages (4 exchanges) covering:
+// 1. Opening positions
+// 2. Direct rebuttals
+// 3. Economic/practical concerns
+// 4. Values/philosophy
 export const POLICY_TOPICS: PolicyTopic[] = [
   {
     id: 'climate',
@@ -19,6 +22,10 @@ export const POLICY_TOPICS: PolicyTopic[] = [
       { side: 'right', text: "With what money? Government 'investments' mean higher taxes and $50 billion in debt." },
       { side: 'left', text: "Inaction costs more. Floods and fires already cost billions. The market won't fix this fast enough." },
       { side: 'right', text: "Markets innovate faster than bureaucrats. Let people choose without mandates driving up power bills." },
+      { side: 'left', text: "Power bills are high because of gas prices, not renewables. Solar is now the cheapest energy source." },
+      { side: 'right', text: "Only with subsidies. And what happens when the sun doesn't shine? Backup power costs a fortune." },
+      { side: 'left', text: "This is about our kids' future. Some things are more important than short-term costs." },
+      { side: 'right', text: "I care about my kids too - including not leaving them with crushing government debt." },
     ],
   },
   {
@@ -36,6 +43,10 @@ export const POLICY_TOPICS: PolicyTopic[] = [
       { side: 'right', text: "Government housing projects cost taxpayers billions and take years. Cut red tape instead." },
       { side: 'left', text: "Deregulation means developers profit while suburbs sprawl. Who protects communities?" },
       { side: 'right', text: "Regulations are why a home costs $1 million. More supply means lower prices for everyone." },
+      { side: 'left', text: "Developers will just build luxury apartments, not affordable homes. They don't care about first-home buyers." },
+      { side: 'right', text: "Any new supply helps. Yesterday's luxury is today's affordable - that's how markets work." },
+      { side: 'left', text: "Housing is a human right. The market has failed - we need government to step in." },
+      { side: 'right', text: "Government created this mess with zoning laws. More government isn't the answer." },
     ],
   },
   {
@@ -53,6 +64,10 @@ export const POLICY_TOPICS: PolicyTopic[] = [
       { side: 'right', text: "Higher taxes mean less investment, fewer jobs. People spend their own money better." },
       { side: 'left', text: "Tax cuts blow out the deficit. Someone has to pay for roads and Medicare." },
       { side: 'right', text: "Government wastes billions on bureaucracy. Cut spending first, then we'll talk." },
+      { side: 'left', text: "Those 'bureaucrats' are teachers, nurses, firefighters. You want to cut them?" },
+      { side: 'right', text: "No - cut the administrators, the consultants, the middle managers. Front line stays." },
+      { side: 'left', text: "A civilised society takes care of everyone. That requires collective investment." },
+      { side: 'right', text: "Voluntary charity and community did that for centuries. Government crowds it out." },
     ],
   },
   {
@@ -70,6 +85,10 @@ export const POLICY_TOPICS: PolicyTopic[] = [
       { side: 'right', text: "Public systems mean waiting months for surgery. I'd rather pay and get treated now." },
       { side: 'left', text: "Private care only works if you're rich. What about everyone else?" },
       { side: 'right', text: "Competition improves quality. Medicare costs keep blowing out - it's not sustainable." },
+      { side: 'left', text: "The US spends double and has worse outcomes. Private isn't automatically better." },
+      { side: 'right', text: "The US isn't a free market - it's the worst of both worlds. True competition works." },
+      { side: 'left', text: "When you're sick, you can't shop around. Healthcare isn't like buying a TV." },
+      { side: 'right', text: "That's why we need price transparency and real competition, not government monopolies." },
     ],
   },
   {
@@ -87,6 +106,10 @@ export const POLICY_TOPICS: PolicyTopic[] = [
       { side: 'right', text: "Mass migration pushes down wages and drives up housing costs for locals." },
       { side: 'left', text: "Without immigration our economy shrinks. Who'll pay taxes when boomers retire?" },
       { side: 'right', text: "Fix training first. Why import workers when young Aussies can't find apprenticeships?" },
+      { side: 'left', text: "Migrants create jobs too - they start businesses, pay taxes, buy houses." },
+      { side: 'right', text: "And compete for houses. Infrastructure can't keep up. Look at our roads and hospitals." },
+      { side: 'left', text: "Blaming migrants for government failures? Fund infrastructure properly instead." },
+      { side: 'right', text: "Or match intake to what we can actually support. That's not racist, it's math." },
     ],
   },
   {
@@ -104,6 +127,10 @@ export const POLICY_TOPICS: PolicyTopic[] = [
       { side: 'right', text: "Higher payments cost billions and can trap people in dependency." },
       { side: 'left', text: "Most unemployed are looking for work. Poverty makes it harder, not easier." },
       { side: 'right', text: "Charities and communities helped before welfare. Government isn't the only answer." },
+      { side: 'left', text: "Charities can't scale. And they shouldn't have to - that's what taxes are for." },
+      { side: 'right', text: "Welfare was meant to be temporary. Now it's multi-generational. That's not compassion." },
+      { side: 'left', text: "So punish kids for their parents' situation? Everyone deserves a fair start." },
+      { side: 'right', text: "A hand up, not a handout. Help people become independent, not dependent." },
     ],
   },
   {
@@ -121,6 +148,10 @@ export const POLICY_TOPICS: PolicyTopic[] = [
       { side: 'right', text: "Parents know best. Give them vouchers and let them choose any school." },
       { side: 'left', text: "Vouchers drain public schools. Rich kids win, poor kids lose." },
       { side: 'right', text: "Competition lifts all boats. Bad schools improve or close - that's accountability." },
+      { side: 'left', text: "Education isn't a business. Some things shouldn't be left to the market." },
+      { side: 'right', text: "Government schools are a monopoly. Monopolies never serve customers well." },
+      { side: 'left', text: "Public education built the middle class. It's the great equaliser." },
+      { side: 'right', text: "One-size-fits-all doesn't work. Let different schools try different approaches." },
     ],
   },
   {
@@ -138,6 +169,10 @@ export const POLICY_TOPICS: PolicyTopic[] = [
       { side: 'right', text: "Agree on the subs, but for different reasons - why fight other countries' wars?" },
       { side: 'left', text: "We need allies for security. But military spending crowds out hospitals and schools." },
       { side: 'right', text: "Defence is one thing government should do. But only for Australia, not foreign adventures." },
+      { side: 'left', text: "The best defence is good relationships. Soft power matters more than hard power." },
+      { side: 'right', text: "Tell that to Ukraine. Soft power doesn't stop tanks. Peace through strength." },
+      { side: 'left', text: "So we spend forever preparing for wars that diplomacy could prevent?" },
+      { side: 'right', text: "We prepare so we never have to fight. That's deterrence. It actually works." },
     ],
   },
   {
@@ -155,6 +190,10 @@ export const POLICY_TOPICS: PolicyTopic[] = [
       { side: 'right', text: "All Australians should be equal under the law. Special programs divide us." },
       { side: 'left', text: "250 years of 'equal treatment' hasn't worked. Something different is needed." },
       { side: 'right', text: "Fund services by need, not race. That's fair for everyone struggling." },
+      { side: 'left', text: "It's not about race, it's about recognising First Nations as distinct peoples." },
+      { side: 'right', text: "We're one nation. Creating separate systems based on ancestry divides us." },
+      { side: 'left', text: "Unity doesn't mean ignoring history. Truth and justice come before reconciliation." },
+      { side: 'right', text: "We can't change history. Focus on practical help now, not symbolic gestures." },
     ],
   },
   {
@@ -172,6 +211,10 @@ export const POLICY_TOPICS: PolicyTopic[] = [
       { side: 'right', text: "Mandated wage rises cause inflation. Businesses pass costs to customers." },
       { side: 'left', text: "Record profits while workers struggle? Someone's doing fine." },
       { side: 'right', text: "Cut red tape and taxes. Prices drop when government stops adding costs." },
+      { side: 'left', text: "Deregulation means unsafe products and exploited workers. We tried that." },
+      { side: 'right', text: "Over-regulation means $10 coffees and small businesses closing. Balance matters." },
+      { side: 'left', text: "The minimum wage hasn't caused unemployment. That's a myth." },
+      { side: 'right', text: "Tell that to the teenager who can't get their first job. Entry-level is disappearing." },
     ],
   },
 ];
