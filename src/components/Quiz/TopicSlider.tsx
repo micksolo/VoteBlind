@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { DebateView } from '../Debate';
+import { useDebateConversation } from '../../hooks/useDebateConversation';
 import type { PolicyTopic, SliderPosition } from '../../types';
 
 interface TopicSliderProps {
@@ -29,6 +30,20 @@ export function TopicSlider({
 }: TopicSliderProps) {
   const progress = (topicNumber / totalTopics) * 100;
 
+  // Interactive debate conversation
+  const {
+    messages,
+    isGenerating,
+    streamingText,
+    error,
+    canContinue,
+    continueDebate,
+  } = useDebateConversation({
+    topic,
+    initialMessages: topic.debate,
+    maxMessages: 20,
+  });
+
   return (
     <div className="max-w-md mx-auto">
       {/* Progress */}
@@ -54,9 +69,19 @@ export function TopicSlider({
           <h2 className="text-lg font-bold text-gray-900">{topic.name}</h2>
         </div>
 
-        {/* Debate View */}
+        {/* Debate View - now interactive */}
         <div className="mb-4">
-          <DebateView debate={topic.debate} selectedSide={value} />
+          <DebateView
+            debate={messages}
+            selectedSide={value}
+            isInteractive={true}
+            isGenerating={isGenerating}
+            streamingText={streamingText}
+            error={error}
+            canContinue={canContinue}
+            onContinue={continueDebate}
+            maxMessages={20}
+          />
         </div>
 
         {/* Slider Buttons */}
@@ -71,7 +96,7 @@ export function TopicSlider({
 
             if (isSelected) {
               if (isNeutral) {
-                bgColor = 'bg-gray-400';
+                bgColor = 'bg-teal-500';
                 textColor = 'text-white';
               } else if (isLeft) {
                 bgColor = 'bg-blue-500';
