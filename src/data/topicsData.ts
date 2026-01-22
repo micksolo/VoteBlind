@@ -1,0 +1,321 @@
+import type { PolicyTopic, Party, PartyPosition, SliderPosition } from '../types';
+
+// Policy topics with balanced left (progressive) and right (libertarian) positions
+// Each side shows what you gain AND what you trade off
+export const POLICY_TOPICS: PolicyTopic[] = [
+  {
+    id: 'climate',
+    name: 'Climate & Energy',
+    icon: '🌱',
+    leftLabel: 'Green transition',
+    leftGain: 'Clean energy, green jobs',
+    leftCost: 'Higher transition costs',
+    rightLabel: 'Market solutions',
+    rightGain: 'Cheaper energy, choice',
+    rightCost: 'Slower emission cuts',
+  },
+  {
+    id: 'housing',
+    name: 'Housing',
+    icon: '🏠',
+    leftLabel: 'Public housing',
+    leftGain: 'Affordable homes guaranteed',
+    leftCost: 'Higher public debt',
+    rightLabel: 'Deregulate building',
+    rightGain: 'More homes, lower prices',
+    rightCost: 'Less planning control',
+  },
+  {
+    id: 'economy',
+    name: 'Economy & Tax',
+    icon: '💼',
+    leftLabel: 'Tax & invest',
+    leftGain: 'Better public services',
+    leftCost: 'Higher taxes',
+    rightLabel: 'Cut taxes',
+    rightGain: 'Keep more of your money',
+    rightCost: 'Fewer public services',
+  },
+  {
+    id: 'healthcare',
+    name: 'Healthcare',
+    icon: '🏥',
+    leftLabel: 'Universal public',
+    leftGain: 'Free care for all',
+    leftCost: 'Longer waits possible',
+    rightLabel: 'Private choice',
+    rightGain: 'No wait times, choice',
+    rightCost: 'Pay out of pocket',
+  },
+  {
+    id: 'immigration',
+    name: 'Immigration',
+    icon: '🌏',
+    leftLabel: 'Higher intake',
+    leftGain: 'Larger workforce',
+    leftCost: 'More demand on services',
+    rightLabel: 'Lower intake',
+    rightGain: 'Less wage competition',
+    rightCost: 'Labour shortages',
+  },
+  {
+    id: 'welfare',
+    name: 'Welfare',
+    icon: '👥',
+    leftLabel: 'Stronger safety net',
+    leftGain: 'No one in poverty',
+    leftCost: 'Higher taxes',
+    rightLabel: 'Minimal welfare',
+    rightGain: 'Lower taxes, self-reliance',
+    rightCost: 'Less safety net',
+  },
+  {
+    id: 'education',
+    name: 'Education',
+    icon: '📚',
+    leftLabel: 'Fund public schools',
+    leftGain: 'Equal access for all',
+    leftCost: 'Less school choice',
+    rightLabel: 'School choice',
+    rightGain: 'Parent choice, competition',
+    rightCost: 'Unequal outcomes',
+  },
+  {
+    id: 'defense',
+    name: 'Defence',
+    icon: '🛡️',
+    leftLabel: 'Diplomacy focus',
+    leftGain: 'Peace focus, less spending',
+    leftCost: 'Less military deterrence',
+    rightLabel: 'Non-intervention',
+    rightGain: 'Less foreign involvement',
+    rightCost: 'Less global influence',
+  },
+  {
+    id: 'indigenous',
+    name: 'Indigenous Affairs',
+    icon: '🤝',
+    leftLabel: 'Self-determination',
+    leftGain: 'Indigenous-led decisions',
+    leftCost: 'Parallel systems',
+    rightLabel: 'Equal treatment',
+    rightGain: 'Same rules for all',
+    rightCost: 'No special recognition',
+  },
+  {
+    id: 'cost-of-living',
+    name: 'Cost of Living',
+    icon: '💰',
+    leftLabel: 'Raise wages',
+    leftGain: 'Higher minimum wages',
+    leftCost: 'Higher business costs',
+    rightLabel: 'Cut regulations',
+    rightGain: 'Lower prices',
+    rightCost: 'Fewer worker protections',
+  },
+];
+
+// Australian federal parties
+export const PARTIES: Party[] = [
+  {
+    id: 'grn',
+    name: 'Australian Greens',
+    short_name: 'Greens',
+    color: '#43A047',
+  },
+  {
+    id: 'alp',
+    name: 'Australian Labor Party',
+    short_name: 'Labor',
+    color: '#E53935',
+  },
+  {
+    id: 'teal',
+    name: 'Teal Independents',
+    short_name: 'Teals',
+    color: '#00897B',
+  },
+  {
+    id: 'lib',
+    name: 'Liberal Party of Australia',
+    short_name: 'Liberal',
+    color: '#1565C0',
+    coalition_group_id: 'coalition',
+  },
+  {
+    id: 'nat',
+    name: 'National Party of Australia',
+    short_name: 'Nationals',
+    color: '#1B5E20',
+    coalition_group_id: 'coalition',
+  },
+  {
+    id: 'onp',
+    name: "Pauline Hanson's One Nation",
+    short_name: 'One Nation',
+    color: '#FF6F00',
+  },
+  {
+    id: 'jln',
+    name: 'Jacqui Lambie Network',
+    short_name: 'Lambie',
+    color: '#7B1FA2',
+  },
+  {
+    id: 'kap',
+    name: "Katter's Australian Party",
+    short_name: 'Katter',
+    color: '#8D6E63',
+  },
+  {
+    id: 'ldp',
+    name: 'Liberal Democrats',
+    short_name: 'Lib Dems',
+    color: '#FFC107',
+  },
+  {
+    id: 'ajp',
+    name: 'Animal Justice Party',
+    short_name: 'Animal Justice',
+    color: '#4CAF50',
+  },
+];
+
+// Party positions: -2 (strong left) to +2 (strong right) for each topic
+const pos = (party_id: string, topic_id: string, position: SliderPosition, confidence: 'explicit' | 'inferred' = 'inferred'): PartyPosition => ({
+  party_id,
+  topic_id,
+  position,
+  confidence,
+});
+
+export const PARTY_POSITIONS: PartyPosition[] = [
+  // Climate: Left = green transition, Right = market solutions
+  pos('grn', 'climate', -2, 'explicit'),
+  pos('ajp', 'climate', -2, 'explicit'),
+  pos('teal', 'climate', -2, 'explicit'),
+  pos('alp', 'climate', -1, 'explicit'),
+  pos('jln', 'climate', 0),
+  pos('ldp', 'climate', 2, 'explicit'),
+  pos('lib', 'climate', 1, 'explicit'),
+  pos('nat', 'climate', 2, 'explicit'),
+  pos('onp', 'climate', 2, 'explicit'),
+  pos('kap', 'climate', 1),
+
+  // Housing: Left = public housing, Right = deregulate
+  pos('grn', 'housing', -2, 'explicit'),
+  pos('alp', 'housing', -1),
+  pos('ajp', 'housing', -1),
+  pos('teal', 'housing', 0),
+  pos('jln', 'housing', -1),
+  pos('ldp', 'housing', 2, 'explicit'),
+  pos('lib', 'housing', 1, 'explicit'),
+  pos('nat', 'housing', 1),
+  pos('onp', 'housing', 0),
+  pos('kap', 'housing', 0),
+
+  // Economy: Left = tax & invest, Right = cut taxes
+  pos('grn', 'economy', -2, 'explicit'),
+  pos('ajp', 'economy', -1),
+  pos('alp', 'economy', -1, 'explicit'),
+  pos('jln', 'economy', -1),
+  pos('teal', 'economy', 0),
+  pos('kap', 'economy', 0),
+  pos('onp', 'economy', 1),
+  pos('lib', 'economy', 2, 'explicit'),
+  pos('nat', 'economy', 2, 'explicit'),
+  pos('ldp', 'economy', 2, 'explicit'),
+
+  // Healthcare: Left = universal public, Right = private choice
+  pos('grn', 'healthcare', -2, 'explicit'),
+  pos('ajp', 'healthcare', -2),
+  pos('alp', 'healthcare', -2, 'explicit'),
+  pos('jln', 'healthcare', -2, 'explicit'),
+  pos('teal', 'healthcare', -1),
+  pos('kap', 'healthcare', -1),
+  pos('onp', 'healthcare', -1),
+  pos('nat', 'healthcare', 1),
+  pos('lib', 'healthcare', 1),
+  pos('ldp', 'healthcare', 2, 'explicit'),
+
+  // Immigration: Left = higher intake, Right = lower intake
+  pos('grn', 'immigration', -2, 'explicit'),
+  pos('ldp', 'immigration', -1, 'explicit'), // Libertarians favor free movement
+  pos('ajp', 'immigration', -1),
+  pos('alp', 'immigration', 0),
+  pos('teal', 'immigration', 0),
+  pos('lib', 'immigration', 1),
+  pos('nat', 'immigration', 1),
+  pos('jln', 'immigration', 2),
+  pos('kap', 'immigration', 2),
+  pos('onp', 'immigration', 2, 'explicit'),
+
+  // Welfare: Left = stronger safety net, Right = minimal welfare
+  pos('grn', 'welfare', -2, 'explicit'),
+  pos('ajp', 'welfare', -2),
+  pos('jln', 'welfare', -1),
+  pos('alp', 'welfare', -1),
+  pos('teal', 'welfare', 0),
+  pos('kap', 'welfare', 0),
+  pos('onp', 'welfare', 0),
+  pos('lib', 'welfare', 1),
+  pos('nat', 'welfare', 1),
+  pos('ldp', 'welfare', 2, 'explicit'),
+
+  // Education: Left = fund public, Right = school choice
+  pos('grn', 'education', -2, 'explicit'),
+  pos('alp', 'education', -2, 'explicit'),
+  pos('ajp', 'education', -1),
+  pos('teal', 'education', -1),
+  pos('jln', 'education', 0),
+  pos('kap', 'education', 0),
+  pos('onp', 'education', 1),
+  pos('lib', 'education', 1),
+  pos('nat', 'education', 1),
+  pos('ldp', 'education', 2, 'explicit'),
+
+  // Defence: Left = diplomacy, Right = non-intervention
+  // Note: This is where left/right converge somewhat - both can favor less military
+  pos('grn', 'defense', -2, 'explicit'),
+  pos('ajp', 'defense', -2),
+  pos('ldp', 'defense', 1), // Libertarians: non-interventionist
+  pos('teal', 'defense', -1),
+  pos('alp', 'defense', 0, 'explicit'),
+  pos('jln', 'defense', 1, 'explicit'),
+  pos('kap', 'defense', 1),
+  pos('lib', 'defense', 1, 'explicit'),
+  pos('nat', 'defense', 1, 'explicit'),
+  pos('onp', 'defense', 1, 'explicit'),
+
+  // Indigenous: Left = self-determination, Right = equal treatment
+  pos('grn', 'indigenous', -2, 'explicit'),
+  pos('ajp', 'indigenous', -2),
+  pos('alp', 'indigenous', -2, 'explicit'),
+  pos('teal', 'indigenous', -2, 'explicit'),
+  pos('jln', 'indigenous', 0),
+  pos('kap', 'indigenous', 1),
+  pos('lib', 'indigenous', 1),
+  pos('nat', 'indigenous', 1),
+  pos('onp', 'indigenous', 2, 'explicit'),
+  pos('ldp', 'indigenous', 2, 'explicit'),
+
+  // Cost of Living: Left = raise wages, Right = cut regulations
+  pos('grn', 'cost-of-living', -2, 'explicit'),
+  pos('alp', 'cost-of-living', -1, 'explicit'),
+  pos('ajp', 'cost-of-living', -1),
+  pos('jln', 'cost-of-living', -1),
+  pos('kap', 'cost-of-living', 0),
+  pos('teal', 'cost-of-living', 0),
+  pos('onp', 'cost-of-living', 0),
+  pos('lib', 'cost-of-living', 2, 'explicit'),
+  pos('nat', 'cost-of-living', 2, 'explicit'),
+  pos('ldp', 'cost-of-living', 2, 'explicit'),
+];
+
+// Legacy export for backward compatibility
+export const TOPIC_QUESTIONS = POLICY_TOPICS.map(topic => ({
+  id: `q-${topic.id}`,
+  topic,
+  tradeOffPrompt: '',
+  options: [],
+}));
