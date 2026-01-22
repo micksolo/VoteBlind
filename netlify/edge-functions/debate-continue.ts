@@ -6,7 +6,7 @@
  * Response: Server-Sent Events stream with new messages
  */
 
-import Anthropic from 'npm:@anthropic-ai/sdk@0.39.0';
+import Anthropic from 'https://esm.sh/@anthropic-ai/sdk@0.39.0';
 
 const MAX_MESSAGES = 20;
 const MODEL = 'claude-3-5-haiku-20241022';
