@@ -42,6 +42,12 @@ export interface Candidate {
   ballot_position?: number;
 }
 
+// Debate message for character conversations
+export interface DebateMessage {
+  side: 'left' | 'right';
+  text: string;
+}
+
 // Policy Topics - the core issues voters care about
 export interface PolicyTopic {
   id: string;
@@ -55,6 +61,8 @@ export interface PolicyTopic {
   rightLabel: string;
   rightGain: string; // ✓ what you get
   rightCost: string; // ✗ what you trade
+  // Debate conversation (4 messages)
+  debate: DebateMessage[];
 }
 
 // Trade-off options for each topic

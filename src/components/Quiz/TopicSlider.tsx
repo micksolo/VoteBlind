@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { DebateView } from '../Debate';
 import type { PolicyTopic, SliderPosition } from '../../types';
 
 interface TopicSliderProps {
@@ -31,7 +32,7 @@ export function TopicSlider({
   return (
     <div className="max-w-md mx-auto">
       {/* Progress */}
-      <div className="mb-6">
+      <div className="mb-4">
         <div className="flex justify-between text-sm text-gray-500 mb-2">
           <span>{topicNumber} of {totalTopics}</span>
         </div>
@@ -46,56 +47,16 @@ export function TopicSlider({
       </div>
 
       {/* Topic Card */}
-      <div className="bg-white rounded-2xl shadow-lg p-5">
+      <div className="bg-white rounded-2xl shadow-lg p-4">
         {/* Icon & Name */}
-        <div className="text-center mb-5">
-          <span className="text-3xl mb-1 block">{topic.icon}</span>
+        <div className="text-center mb-4">
+          <span className="text-2xl mb-1 block">{topic.icon}</span>
           <h2 className="text-lg font-bold text-gray-900">{topic.name}</h2>
         </div>
 
-        {/* Two columns: Left vs Right */}
-        <div className="grid grid-cols-2 gap-3 mb-5">
-          {/* Left side */}
-          <div
-            className={`p-3 rounded-xl border-2 transition-all ${
-              value !== undefined && value < 0
-                ? 'border-blue-500 bg-blue-50'
-                : 'border-gray-200 bg-gray-50'
-            }`}
-          >
-            <p className="font-semibold text-gray-900 text-sm mb-2">{topic.leftLabel}</p>
-            <div className="space-y-1">
-              <p className="text-xs text-green-700 flex items-start gap-1">
-                <span className="shrink-0">✓</span>
-                <span>{topic.leftGain}</span>
-              </p>
-              <p className="text-xs text-red-600 flex items-start gap-1">
-                <span className="shrink-0">✗</span>
-                <span>{topic.leftCost}</span>
-              </p>
-            </div>
-          </div>
-
-          {/* Right side */}
-          <div
-            className={`p-3 rounded-xl border-2 transition-all ${
-              value !== undefined && value > 0
-                ? 'border-purple-500 bg-purple-50'
-                : 'border-gray-200 bg-gray-50'
-            }`}
-          >
-            <p className="font-semibold text-gray-900 text-sm mb-2">{topic.rightLabel}</p>
-            <div className="space-y-1">
-              <p className="text-xs text-green-700 flex items-start gap-1">
-                <span className="shrink-0">✓</span>
-                <span>{topic.rightGain}</span>
-              </p>
-              <p className="text-xs text-red-600 flex items-start gap-1">
-                <span className="shrink-0">✗</span>
-                <span>{topic.rightCost}</span>
-              </p>
-            </div>
-          </div>
+        {/* Debate View */}
+        <div className="mb-4">
+          <DebateView debate={topic.debate} selectedSide={value} />
         </div>
 
         {/* Slider Buttons */}
@@ -144,13 +105,13 @@ export function TopicSlider({
 
         {/* Axis labels */}
         <div className="flex justify-between text-xs text-gray-400 px-1">
-          <span>← Left</span>
-          <span>Right →</span>
+          <span>← {topic.leftLabel}</span>
+          <span>{topic.rightLabel} →</span>
         </div>
       </div>
 
       {/* Navigation */}
-      <div className="flex gap-3 mt-6">
+      <div className="flex gap-3 mt-4">
         <button
           onClick={onPrevious}
           disabled={!canGoBack}

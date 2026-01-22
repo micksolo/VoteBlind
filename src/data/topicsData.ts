@@ -2,6 +2,7 @@ import type { PolicyTopic, Party, PartyPosition, SliderPosition } from '../types
 
 // Policy topics with balanced left (progressive) and right (libertarian) positions
 // Each side shows what you gain AND what you trade off
+// Debates include economic trade-offs: cost, inflation, debt, taxes
 export const POLICY_TOPICS: PolicyTopic[] = [
   {
     id: 'climate',
@@ -13,6 +14,12 @@ export const POLICY_TOPICS: PolicyTopic[] = [
     rightLabel: 'Market solutions',
     rightGain: 'Cheaper energy, choice',
     rightCost: 'Slower emission cuts',
+    debate: [
+      { side: 'left', text: "We need to invest in renewables now. Clean energy means jobs and cleaner air for our kids." },
+      { side: 'right', text: "With what money? Government 'investments' mean higher taxes and $50 billion in debt." },
+      { side: 'left', text: "Inaction costs more. Floods and fires already cost billions. The market won't fix this fast enough." },
+      { side: 'right', text: "Markets innovate faster than bureaucrats. Let people choose without mandates driving up power bills." },
+    ],
   },
   {
     id: 'housing',
@@ -24,6 +31,12 @@ export const POLICY_TOPICS: PolicyTopic[] = [
     rightLabel: 'Deregulate building',
     rightGain: 'More homes, lower prices',
     rightCost: 'Less planning control',
+    debate: [
+      { side: 'left', text: "Young people can't buy homes. Government needs to build affordable housing." },
+      { side: 'right', text: "Government housing projects cost taxpayers billions and take years. Cut red tape instead." },
+      { side: 'left', text: "Deregulation means developers profit while suburbs sprawl. Who protects communities?" },
+      { side: 'right', text: "Regulations are why a home costs $1 million. More supply means lower prices for everyone." },
+    ],
   },
   {
     id: 'economy',
@@ -35,6 +48,12 @@ export const POLICY_TOPICS: PolicyTopic[] = [
     rightLabel: 'Cut taxes',
     rightGain: 'Keep more of your money',
     rightCost: 'Fewer public services',
+    debate: [
+      { side: 'left', text: "The wealthy should pay their fair share. We need to fund schools and hospitals." },
+      { side: 'right', text: "Higher taxes mean less investment, fewer jobs. People spend their own money better." },
+      { side: 'left', text: "Tax cuts blow out the deficit. Someone has to pay for roads and Medicare." },
+      { side: 'right', text: "Government wastes billions on bureaucracy. Cut spending first, then we'll talk." },
+    ],
   },
   {
     id: 'healthcare',
@@ -46,6 +65,12 @@ export const POLICY_TOPICS: PolicyTopic[] = [
     rightLabel: 'Private choice',
     rightGain: 'No wait times, choice',
     rightCost: 'Pay out of pocket',
+    debate: [
+      { side: 'left', text: "Healthcare is a right. No one should go broke because they got sick." },
+      { side: 'right', text: "Public systems mean waiting months for surgery. I'd rather pay and get treated now." },
+      { side: 'left', text: "Private care only works if you're rich. What about everyone else?" },
+      { side: 'right', text: "Competition improves quality. Medicare costs keep blowing out - it's not sustainable." },
+    ],
   },
   {
     id: 'immigration',
@@ -57,6 +82,12 @@ export const POLICY_TOPICS: PolicyTopic[] = [
     rightLabel: 'Lower intake',
     rightGain: 'Less wage competition',
     rightCost: 'Labour shortages',
+    debate: [
+      { side: 'left', text: "Migrants built this country. We need workers for aged care and construction." },
+      { side: 'right', text: "Mass migration pushes down wages and drives up housing costs for locals." },
+      { side: 'left', text: "Without immigration our economy shrinks. Who'll pay taxes when boomers retire?" },
+      { side: 'right', text: "Fix training first. Why import workers when young Aussies can't find apprenticeships?" },
+    ],
   },
   {
     id: 'welfare',
@@ -68,6 +99,12 @@ export const POLICY_TOPICS: PolicyTopic[] = [
     rightLabel: 'Minimal welfare',
     rightGain: 'Lower taxes, self-reliance',
     rightCost: 'Less safety net',
+    debate: [
+      { side: 'left', text: "JobSeeker is below the poverty line. People can't live on $50 a day." },
+      { side: 'right', text: "Higher payments cost billions and can trap people in dependency." },
+      { side: 'left', text: "Most unemployed are looking for work. Poverty makes it harder, not easier." },
+      { side: 'right', text: "Charities and communities helped before welfare. Government isn't the only answer." },
+    ],
   },
   {
     id: 'education',
@@ -79,6 +116,12 @@ export const POLICY_TOPICS: PolicyTopic[] = [
     rightLabel: 'School choice',
     rightGain: 'Parent choice, competition',
     rightCost: 'Unequal outcomes',
+    debate: [
+      { side: 'left', text: "Every kid deserves a great education. Public schools need proper funding." },
+      { side: 'right', text: "Parents know best. Give them vouchers and let them choose any school." },
+      { side: 'left', text: "Vouchers drain public schools. Rich kids win, poor kids lose." },
+      { side: 'right', text: "Competition lifts all boats. Bad schools improve or close - that's accountability." },
+    ],
   },
   {
     id: 'defense',
@@ -90,6 +133,12 @@ export const POLICY_TOPICS: PolicyTopic[] = [
     rightLabel: 'Non-intervention',
     rightGain: 'Less foreign involvement',
     rightCost: 'Less global influence',
+    debate: [
+      { side: 'left', text: "We should invest in diplomacy and aid, not nuclear subs that cost $300 billion." },
+      { side: 'right', text: "Agree on the subs, but for different reasons - why fight other countries' wars?" },
+      { side: 'left', text: "We need allies for security. But military spending crowds out hospitals and schools." },
+      { side: 'right', text: "Defence is one thing government should do. But only for Australia, not foreign adventures." },
+    ],
   },
   {
     id: 'indigenous',
@@ -101,6 +150,12 @@ export const POLICY_TOPICS: PolicyTopic[] = [
     rightLabel: 'Equal treatment',
     rightGain: 'Same rules for all',
     rightCost: 'No special recognition',
+    debate: [
+      { side: 'left', text: "Indigenous communities know what they need. Self-determination gets better outcomes." },
+      { side: 'right', text: "All Australians should be equal under the law. Special programs divide us." },
+      { side: 'left', text: "250 years of 'equal treatment' hasn't worked. Something different is needed." },
+      { side: 'right', text: "Fund services by need, not race. That's fair for everyone struggling." },
+    ],
   },
   {
     id: 'cost-of-living',
@@ -112,6 +167,12 @@ export const POLICY_TOPICS: PolicyTopic[] = [
     rightLabel: 'Cut regulations',
     rightGain: 'Lower prices',
     rightCost: 'Fewer worker protections',
+    debate: [
+      { side: 'left', text: "Wages haven't kept up with prices. Workers deserve a pay rise." },
+      { side: 'right', text: "Mandated wage rises cause inflation. Businesses pass costs to customers." },
+      { side: 'left', text: "Record profits while workers struggle? Someone's doing fine." },
+      { side: 'right', text: "Cut red tape and taxes. Prices drop when government stops adding costs." },
+    ],
   },
 ];
 
@@ -240,7 +301,7 @@ export const PARTY_POSITIONS: PartyPosition[] = [
 
   // Immigration: Left = higher intake, Right = lower intake
   pos('grn', 'immigration', -2, 'explicit'),
-  pos('ldp', 'immigration', -1, 'explicit'), // Libertarians favor free movement
+  pos('ldp', 'immigration', -1, 'explicit'),
   pos('ajp', 'immigration', -1),
   pos('alp', 'immigration', 0),
   pos('teal', 'immigration', 0),
@@ -275,10 +336,9 @@ export const PARTY_POSITIONS: PartyPosition[] = [
   pos('ldp', 'education', 2, 'explicit'),
 
   // Defence: Left = diplomacy, Right = non-intervention
-  // Note: This is where left/right converge somewhat - both can favor less military
   pos('grn', 'defense', -2, 'explicit'),
   pos('ajp', 'defense', -2),
-  pos('ldp', 'defense', 1), // Libertarians: non-interventionist
+  pos('ldp', 'defense', 1),
   pos('teal', 'defense', -1),
   pos('alp', 'defense', 0, 'explicit'),
   pos('jln', 'defense', 1, 'explicit'),
