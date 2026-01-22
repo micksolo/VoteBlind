@@ -9,7 +9,7 @@ export function Footer() {
           </p>
 
           <p className="mb-2">
-            VoteBlind is an independent, non-partisan tool.
+            Informed Vote is an independent, non-partisan tool.
             Not affiliated with the AEC or any political party.
           </p>
 

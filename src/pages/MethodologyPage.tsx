@@ -14,7 +14,7 @@ export function MethodologyPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">How We Calculate Alignment</h2>
           <p className="text-gray-600 mb-4">
-            VoteBlind uses a weighted distance algorithm to compare your answers with
+            Informed Vote uses a weighted distance algorithm to compare your answers with
             party positions:
           </p>
 
@@ -79,7 +79,7 @@ export function MethodologyPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Open Source</h2>
           <p className="text-gray-600 mb-4">
-            VoteBlind is open source. You can review our code, data, and methodology on GitHub.
+            Informed Vote is open source. You can review our code, data, and methodology on GitHub.
             We welcome contributions and feedback from the community.
           </p>
           <a

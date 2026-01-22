@@ -21,9 +21,9 @@ export function HomePage() {
           {/* Hero */}
           <div className="mb-8">
             <div className="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <span className="text-white font-bold text-3xl">VB</span>
+              <span className="text-white font-bold text-3xl">IV</span>
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">VoteBlind</h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">Informed Vote</h1>
             <p className="text-xl text-gray-600 leading-relaxed">
               Discover which parties align with your priorities.
               <br />

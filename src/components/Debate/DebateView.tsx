@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DebateBubble } from './DebateBubble';
-import type { DebateMessage, SliderPosition } from '../../types';
+import type { DebateMessage, SliderPosition, DebateSide } from '../../types';
 
 interface DebateViewProps {
   debate: DebateMessage[];
@@ -20,10 +20,16 @@ export function DebateView({ debate, selectedSide }: DebateViewProps) {
   };
 
   // Determine which side is selected for highlighting
-  const getIsSelected = (side: 'left' | 'right'): boolean | undefined => {
-    if (selectedSide === undefined || selectedSide === 0) return undefined;
+  const getIsSelected = (side: DebateSide): boolean | undefined => {
+    if (selectedSide === undefined) return undefined;
+    // Neutral (0) highlights centrist
+    if (selectedSide === 0) return side === 'center';
+    // Negative highlights left
     if (side === 'left') return selectedSide < 0;
-    return selectedSide > 0;
+    // Positive highlights right
+    if (side === 'right') return selectedSide > 0;
+    // Center not highlighted for non-neutral selections
+    return undefined;
   };
 
   return (

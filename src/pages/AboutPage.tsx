@@ -9,12 +9,12 @@ export function AboutPage() {
         animate={{ opacity: 1, y: 0 }}
         className="max-w-2xl mx-auto"
       >
-        <h1 className="text-3xl font-bold text-gray-900 mb-6">About VoteBlind</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-6">About Informed Vote</h1>
 
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">What is VoteBlind?</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">What is Informed Vote?</h2>
           <p className="text-gray-600 mb-4">
-            VoteBlind is an independent, non-partisan tool designed to help Australian voters
+            Informed Vote is an independent, non-partisan tool designed to help Australian voters
             discover which political parties align with their values and priorities.
           </p>
           <p className="text-gray-600 mb-4">
@@ -31,7 +31,7 @@ export function AboutPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Privacy</h2>
           <p className="text-gray-600 mb-4">
-            VoteBlind is designed with privacy as a core principle:
+            Informed Vote is designed with privacy as a core principle:
           </p>
           <ul className="list-disc list-inside text-gray-600 space-y-2">
             <li>Your answers are stored only on your device (in browser storage)</li>
@@ -45,7 +45,7 @@ export function AboutPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Independence</h2>
           <p className="text-gray-600 mb-4">
-            VoteBlind is:
+            Informed Vote is:
           </p>
           <ul className="list-disc list-inside text-gray-600 space-y-2">
             <li>Not affiliated with the Australian Electoral Commission</li>
@@ -58,7 +58,7 @@ export function AboutPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Disclaimer</h2>
           <p className="text-gray-600">
-            The information provided by VoteBlind is for general informational purposes only.
+            The information provided by Informed Vote is for general informational purposes only.
             Party positions are based on publicly available policy documents and may not reflect
             the full complexity of each party's stance. Always verify information with official
             party sources. This tool does not constitute voting advice.

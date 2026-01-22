@@ -43,8 +43,10 @@ export interface Candidate {
 }
 
 // Debate message for character conversations
+export type DebateSide = 'left' | 'right' | 'center';
+
 export interface DebateMessage {
-  side: 'left' | 'right';
+  side: DebateSide;
   text: string;
 }
 

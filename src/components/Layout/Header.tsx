@@ -7,9 +7,9 @@ export function Header() {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">VB</span>
+              <span className="text-white font-bold text-sm">IV</span>
             </div>
-            <span className="font-bold text-xl text-gray-900">VoteBlind</span>
+            <span className="font-bold text-xl text-gray-900">Informed Vote</span>
           </Link>
           <nav className="flex items-center gap-4">
             <Link

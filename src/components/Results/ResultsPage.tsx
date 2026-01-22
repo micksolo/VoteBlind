@@ -221,7 +221,7 @@ export function ResultsPage() {
             This tool provides general guidance based on publicly available policy
             information. Results should not be considered voting advice.
           </p>
-          <p>VoteBlind is not affiliated with the AEC or any political party.</p>
+          <p>Informed Vote is not affiliated with the AEC or any political party.</p>
         </motion.div>
 
         {/* Actions */}
